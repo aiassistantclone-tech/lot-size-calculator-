@@ -21,22 +21,68 @@
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
   }
-  .header { background: #f5a623; padding: 20px; text-align: center; color: #fff; }
+  .header {
+    background: #f5a623;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+  }
   .header h1 { font-size: 22px; }
   .header p { font-size: 13px; margin-top: 4px; }
   .form { padding: 20px; }
   .field { margin-bottom: 16px; }
-  label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; color: #666; margin-bottom: 6px; }
-  input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 6px;
+  }
+  input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+  }
   .toggle-group { display: flex; gap: 6px; margin-bottom: 6px; }
-  .toggle-btn { flex: 1; padding: 8px; border: 2px solid #ddd; background: #fafafa; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 700; }
+  .toggle-btn {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid #ddd;
+    background: #fafafa;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+  }
   .toggle-btn.active { background: #2a5298; color: #fff; border-color: #2a5298; }
-  .results { background: #f0f4f8; padding: 20px; border-top: 3px solid #2a5298; }
-  .lot-display { text-align: center; background: #fff; padding: 16px; border-radius: 12px; border: 3px solid #2a5298; margin-bottom: 14px; }
+  .results {
+    background: #f0f4f8;
+    padding: 20px;
+    border-top: 3px solid #2a5298;
+  }
+  .lot-display {
+    text-align: center;
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    border: 3px solid #2a5298;
+    margin-bottom: 14px;
+  }
   .lot-display .label { font-size: 12px; color: #666; text-transform: uppercase; }
   .lot-display .value { font-size: 38px; font-weight: 800; color: #2a5298; }
   .lot-display .sub { font-size: 13px; color: #666; }
-  .row { display: flex; justify-content: space-between; padding: 10px 14px; background: #fff; border-radius: 8px; margin-bottom: 6px; font-size: 14px; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
   .row.green { background: #e8f5e9; color: #2e7d32; }
   .row.red { background: #ffebee; color: #c62828; }
   .row .v { font-weight: 700; }
@@ -46,10 +92,17 @@
 </head>
 <body>
 <div class="container">
-  <div class="header"><h1>Lot Size Calculator</h1><p>Position sizing with risk/reward</p></div>
+  <div class="header">
+    <h1>Lot Size Calculator</h1>
+    <p>Position sizing with risk/reward</p>
+  </div>
   <div class="form">
-    <div class="field"><label>Account Balance ($)</label><input type="number" id="balance" value="10000" step="any"></div>
-    <div class="field"><label>Instrument</label>
+    <div class="field">
+      <label>Account Balance ($)</label>
+      <input type="number" id="balance" value="10000" step="any">
+    </div>
+    <div class="field">
+      <label>Instrument</label>
       <select id="instrument">
         <option value="gold">Gold (XAU/USD)</option>
         <option value="silver">Silver (XAG/USD)</option>
@@ -64,21 +117,24 @@
         <option value="btc">Bitcoin</option>
       </select>
     </div>
-    <div class="field"><label>Risk</label>
+    <div class="field">
+      <label>Risk</label>
       <div class="toggle-group">
         <button type="button" class="toggle-btn active" data-g="risk" data-v="percent">% of Account</button>
         <button type="button" class="toggle-btn" data-g="risk" data-v="dollar">Dollar Amount</button>
       </div>
       <input type="number" id="risk" value="1" step="any">
     </div>
-    <div class="field"><label>Stop Loss</label>
+    <div class="field">
+      <label>Stop Loss</label>
       <div class="toggle-group">
         <button type="button" class="toggle-btn active" data-g="sl" data-v="pips">Pips</button>
         <button type="button" class="toggle-btn" data-g="sl" data-v="points">Points</button>
       </div>
       <input type="number" id="sl" value="50" step="any">
     </div>
-    <div class="field"><label>Take Profit / Reward</label>
+    <div class="field">
+      <label>Take Profit / Reward</label>
       <div class="toggle-group">
         <button type="button" class="toggle-btn active" data-g="tp" data-v="ratio">R:R Ratio</button>
         <button type="button" class="toggle-btn" data-g="tp" data-v="distance">TP Distance</button>
@@ -87,7 +143,11 @@
     </div>
   </div>
   <div class="results">
-    <div class="lot-display"><div class="label">Recommended Lot Size</div><div class="value" id="lot">0.00</div><div class="sub">standard lots</div></div>
+    <div class="lot-display">
+      <div class="label">Recommended Lot Size</div>
+      <div class="value" id="lot">0.00</div>
+      <div class="sub">standard lots</div>
+    </div>
     <div class="row red"><span>Risk Amount</span><span class="v" id="riskAmt">$0</span></div>
     <div class="row green"><span>Potential Reward</span><span class="v" id="rewardAmt">$0</span></div>
     <div class="row"><span>Risk : Reward</span><span class="v" id="rr">1 : 2</span></div>
@@ -101,7 +161,82 @@
 </div>
 <script>
 var instruments = {
-  gold:   { name: "Gold",      pip: 10,   pt: 100,  note: "1 lot = 100 oz. 1 pip = $0.10, 1 point = $1." },
-  silver: { name: "Silver",    pip: 5,    pt: 50,   note: "1 lot = 5,000 oz." },
-  eurusd: { name: "EUR/USD",   pip: 10,   pt: 1,    note: "1 lot = 100,000 units." },
-  gbpusd: { name: "GB
+  gold:    { name: "Gold",       pip: 10,   pt: 100,  note: "1 lot = 100 oz. 1 pip = $0.10, 1 point = $1." },
+  silver:  { name: "Silver",     pip: 5,    pt: 50,   note: "1 lot = 5,000 oz." },
+  eurusd:  { name: "EUR/USD",    pip: 10,   pt: 1,    note: "1 lot = 100,000 units." },
+  gbpusd:  { name: "GBP/USD",    pip: 10,   pt: 1,    note: "1 lot = 100,000 units." },
+  usdjpy:  { name: "USD/JPY",    pip: 9.09, pt: 0.909,note: "JPY pip ~ $9.09 at price 110." },
+  audusd:  { name: "AUD/USD",    pip: 10,   pt: 1,    note: "1 lot = 100,000 units." },
+  us30:    { name: "US30",       pip: 1,    pt: 1,    note: "1 point = $1 per lot." },
+  nas100:  { name: "NAS100",     pip: 1,    pt: 1,    note: "1 point = $1 per lot." },
+  spx500:  { name: "SPX500",     pip: 1,    pt: 1,    note: "1 point = $1 per lot." },
+  oil:     { name: "Crude Oil",  pip: 10,   pt: 100,  note: "1 lot = 1,000 barrels." },
+  btc:     { name: "Bitcoin",    pip: 1,    pt: 1,    note: "Varies hugely by broker." }
+};
+
+var riskMode = "percent", slMode = "pips", tpMode = "ratio";
+
+function fmt(n, d) {
+  if (!isFinite(n) || isNaN(n)) return "0";
+  return n.toLocaleString(undefined, { minimumFractionDigits: d, maximumFractionDigits: d });
+}
+
+function calc() {
+  var errEl = document.getElementById("err");
+  errEl.textContent = "";
+  var balance = parseFloat(document.getElementById("balance").value);
+  var riskIn = parseFloat(document.getElementById("risk").value);
+  var sl = parseFloat(document.getElementById("sl").value);
+  var tpIn = parseFloat(document.getElementById("tp").value);
+  var inst = instruments[document.getElementById("instrument").value];
+
+  if (!(balance > 0) || !(riskIn > 0) || !(sl > 0) || !(tpIn > 0)) {
+    errEl.textContent = "Enter valid positive numbers for all fields.";
+    return;
+  }
+
+  var ppv = slMode === "pips" ? inst.pip : inst.pt;
+  var riskDollar = riskMode === "percent" ? balance * (riskIn / 100) : riskIn;
+  var lot = riskDollar / (sl * ppv);
+
+  var rr, tpDist, rewardDollar;
+  if (tpMode === "ratio") {
+    rr = tpIn; tpDist = sl * rr; rewardDollar = riskDollar * rr;
+  } else {
+    tpDist = tpIn; rr = tpDist / sl; rewardDollar = lot * tpDist * ppv;
+  }
+
+  document.getElementById("lot").textContent = fmt(lot, 2);
+  document.getElementById("riskAmt").textContent = "$" + fmt(riskDollar, 2) + " (" + fmt((riskDollar/balance)*100, 2) + "%)";
+  document.getElementById("rewardAmt").textContent = "$" + fmt(rewardDollar, 2) + " (" + fmt((rewardDollar/balance)*100, 2) + "%)";
+  document.getElementById("rr").textContent = "1 : " + fmt(rr, 2);
+  document.getElementById("tpDist").textContent = fmt(tpDist, 1) + " " + slMode;
+  document.getElementById("mini").textContent = fmt(lot * 10, 1);
+  document.getElementById("micro").textContent = fmt(lot * 100, 0);
+  document.getElementById("ppv").textContent = "$" + fmt(ppv, 2) + " per " + (slMode === "pips" ? "pip" : "point");
+  document.getElementById("info").textContent = inst.name + " — " + inst.note;
+}
+
+// Live updates on every input change
+document.querySelectorAll("input, select").forEach(function(el) {
+  el.addEventListener("input", calc);
+  el.addEventListener("change", calc);
+});
+
+// Toggle buttons
+document.querySelectorAll(".toggle-btn").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    var g = btn.dataset.g, v = btn.dataset.v;
+    document.querySelectorAll("[data-g='" + g + "']").forEach(function(b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    if (g === "risk") riskMode = v;
+    if (g === "sl") slMode = v;
+    if (g === "tp") tpMode = v;
+    calc();
+  });
+});
+
+calc();
+</script>
+</body>
+</html>
